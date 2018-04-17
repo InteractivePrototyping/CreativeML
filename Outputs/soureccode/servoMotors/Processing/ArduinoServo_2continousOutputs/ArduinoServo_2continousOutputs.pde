@@ -14,10 +14,7 @@ void setup() {
   size(600, 600);
   oscP5 = new OscP5(this, 12000);
 
-  colorMode(HSB);
-  rectMode(CENTER);
-  stroke(30, 40);
-  fill(255, 100, 50);
+  background(0);
 
   //to arduino
   printArray(Serial.list());
@@ -34,8 +31,8 @@ void draw () {
   //visual of recieved data
   noStroke();
   fill(255, 0, 0);  
-  rect(400, 20, 20, l1);
-  rect(400, 60, 20, l2);
+  rect(10, 60, 60, l1);
+  rect(80, 60, 60, l2);
 
 
 
@@ -52,7 +49,7 @@ void oscEvent(OscMessage theOscMessage) {
 
       newVal1=map(value1, 0, 1, 0, 180);
       newVal2=map(value2, 0, 1, 0, 180);
-
+      return;
     } else {
       println("Error: unexpected OSC message received by Processing: ");
       theOscMessage.print();
@@ -63,7 +60,7 @@ void oscEvent(OscMessage theOscMessage) {
 void drawText() {
   stroke(0);
   textAlign(LEFT, TOP); 
-  fill(0, 0, 255);
+  fill(255);
 
   text("Listening for message /wek/inputs on port 12000", 10, 10);
   text("Expecting 2 continuous numeric outputs, all in range 0 to 1:", 10, 25);

@@ -14,9 +14,6 @@ void setup() {
   size(600, 600);
   oscP5 = new OscP5(this, 12000);
 
- 
-
-
   //to arduino
   printArray(Serial.list());
   String portName = Serial.list()[0];
@@ -34,11 +31,11 @@ void draw () {
   //visual of recieved data
   noStroke();
   fill(255, 0, 0);  
-  rect(400, 20, 15, l1);
-  rect(400, 40, 15, l2);
-  rect(400, 60, 15, l3);
-  rect(400, 80, 15, l4);
-  rect(400, 100, 15, l5);
+  rect(10, 60, 60, l1);
+  rect(80, 60, 60, l2);
+  rect(150, 60, 60, l3);
+  rect(220, 60, 60, l4);
+  rect(290, 60, 60, l5);
 
 
   drawText();
@@ -69,7 +66,7 @@ void oscEvent(OscMessage theOscMessage) {
 void drawText() {
   stroke(0);
   textAlign(LEFT, TOP); 
-  fill(0, 0, 255);
+  fill(255);
 
   text("Listening for message /wek/inputs on port 12000", 10, 10);
   text("Expecting 5 continuous numeric outputs, all in range 0 to 1:", 10, 25);
