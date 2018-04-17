@@ -15,7 +15,7 @@ int Label02_Value01, Label02_Value02;
 int Label03_Value01, Label03_Value02;
 
 void setup() {  
-  size(600, 600);
+  size(700, 600);
   oscP5 = new OscP5(this, 12000);
 
   guiSetup();
@@ -30,32 +30,32 @@ void setup() {
 void draw () {
   background(0);
 
-
+  drawText();
   //visual of recieved data
   noStroke();
-  fill(255, 0, 0);  
+  fill(255);  
 
 
   textSize(64);
-  text(currentClass, width/2, height/2);
+  text(currentClass, width-100, height/2-30);
   if (currentClass == 1) {
     newVal1=Label01_Value01;
     newVal2=Label01_Value02;
     fill(255);
-    ellipse(30,90,30,30);
+    ellipse(30, 90, 30, 30);
     //Do something on class 1
   } else if (currentClass == 2) {
     //Do something else on class 2
     newVal1=Label02_Value01;
     newVal2=Label02_Value02;
     fill(255);
-    ellipse(30,150,30,30);
+    ellipse(30, 150, 30, 30);
   } else if (currentClass == 3) {
     //Do something else on class 2
     newVal1=Label03_Value01;
     newVal2=Label03_Value02;
     fill(255);
-    ellipse(30,210,30,30);
+    ellipse(30, 210, 30, 30);
   } else {
     //Else do this
   }
@@ -71,11 +71,20 @@ void oscEvent(OscMessage theOscMessage) {
 void drawText() {
   stroke(0);
   textAlign(LEFT, TOP); 
-  fill(0, 0, 255);
-
+  fill(255);
+  pushMatrix();
+  textSize(16);
   text("Listening for message /wek/inputs on port 12000", 10, 10);
   text("Expecting 5 continuous numeric outputs, all in range 0 to 1:", 10, 25);
   text("values are then mapped between 0-255 and sent to arduino", 10, 40);
+  popMatrix();
+
+  pushMatrix();
+  textSize(22);
+  text("Class ID#1 outputs", width/2, 130);
+  text("Class ID#2 outputs", width/2, 290);
+  text("Class ID#3 outputs", width/2, 430);
+  popMatrix();
 }
 
 void serialSend() {
