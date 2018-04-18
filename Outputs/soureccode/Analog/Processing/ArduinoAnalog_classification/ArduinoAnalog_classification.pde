@@ -96,11 +96,5 @@ void drawText() {
 }
 
 void serialSend() {
-  byte out[] = new byte[5];
-  out[0] = byte(newVal1);
-  out[1] = byte(newVal2);
-  out[2] = byte(newVal3);
-  out[3] = byte(newVal4);
-  out[4] = byte(newVal5);
-  myPort.write(out);
+myPort.write(newVal1 +","+ newVal2 + newVal3 + newVal4 + newVal5 +"\n");
 }
