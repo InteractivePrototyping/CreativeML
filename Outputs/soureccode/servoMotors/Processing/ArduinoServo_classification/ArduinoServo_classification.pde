@@ -88,9 +88,5 @@ void drawText() {
 }
 
 void serialSend() {
-  byte out[] = new byte[2];
-  out[0] = byte(newVal1);
-  out[1] = byte(newVal2);
-
-  myPort.write(out);
+myPort.write(newVal1 +","+ newVal2 +"\n");
 }
